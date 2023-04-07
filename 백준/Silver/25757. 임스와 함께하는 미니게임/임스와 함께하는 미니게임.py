@@ -1,3 +1,4 @@
+import sys
 nop,n=input().split();people=[]
 match n:
     case "Y":
@@ -7,6 +8,5 @@ match n:
     case "O":
         n=int(4)
 for i in range(int(nop)):
-    people.append(input())
-people=list(set(people))
-print(len(people)//(n-1))
+    people.append(sys.stdin.readline().rstrip())
+print(len(list(set(people)))//(int(n)-1))
