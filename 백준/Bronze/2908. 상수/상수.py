@@ -1,0 +1,1 @@
+print(max(map(int,list(map(lambda x:"".join(reversed(x)),input().split())))))
