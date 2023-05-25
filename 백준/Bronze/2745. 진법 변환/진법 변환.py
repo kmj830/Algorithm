@@ -1,2 +1,5 @@
 N,B=input().split();B=int(B)
-print(int(N,B))
+try:
+    print(int(N,B))
+except:
+    pass
