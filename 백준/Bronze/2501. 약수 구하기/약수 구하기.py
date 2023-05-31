@@ -1,0 +1,8 @@
+N,K=map(int,input().split())
+divisors=[]
+for i in range(1,N+1):
+    divisors.append(i) if N%i==0 else None
+try:
+    print(divisors[K-1])
+except:
+    print(0)
