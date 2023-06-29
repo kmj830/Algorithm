@@ -1,0 +1,1 @@
+print([i for i in range(22230667) if '666' in str(i)][int(input())-1])
