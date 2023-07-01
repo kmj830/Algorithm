@@ -1,14 +1,14 @@
 import sys
-n=int(input())
-n_nums=map(int,sys.stdin.readline().split())
+n=input()
+n_nums=sys.stdin.readline().split()
 array={}
 for i in n_nums:
     if i in array:
         array[i]+=1
     else:
         array[i]=1
-m=int(input())
-m_nums=map(int,sys.stdin.readline().split())
+m=input()
+m_nums=sys.stdin.readline().split()
 for i in m_nums:
     try:
         print(array[i],end=" ")
