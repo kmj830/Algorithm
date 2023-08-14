@@ -1,17 +1,19 @@
 n=int(input())
-start,end=1,1
-count,sum=0,1
+start,end=1,0
+answer=[]
+total=0
 while True:
-    if sum==n:
-        count+=1
-        if start==end:
-            break
-        sum-=start
-        start+=1
-    elif sum<n:
+    if total<n:
         end+=1
-        sum+=end
-    else:
-        sum-=start
+        total+=end
+    elif total>n:
+        total-=start
         start+=1
-print(count)
+    else:
+        answer.append([start,end])
+        if start==n and end==n:
+            break
+        else:
+            end+=1
+            total+=end
+print(len(answer))
