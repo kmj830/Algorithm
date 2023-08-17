@@ -8,9 +8,8 @@ for i in range(2,10000000):
             array[j]=False
 while True:
     temp=str(n)
-    length=len(temp)
     if array[n]:
-        for i in range(length//2):
+        for i in range(len(temp)//2):
             if temp[i]!=temp[-i-1]:
                 break
         else:
