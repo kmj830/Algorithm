@@ -1,26 +1,27 @@
-import re
+import sys
+input=sys.stdin.readline
+
+def vps(ps):
+  s=[]
+  for i in ps:
+    if i=='(' or i==')' or i=='[' or i==']':
+      s.append(i)
+    try:
+      if s[-1]==')' and s[-2]=='(':
+        s.pop()
+        s.pop()
+      elif s[-1]==']' and s[-2]=='[':
+        s.pop()
+        s.pop()
+    except:
+      None
+  if len(s)==0:
+    return 'yes'
+  else:
+    return 'no'
 while True:
-    test=input()
-    temp=list(test)
-    stack=[];count=0
-    if temp==['.']:
-        break
-    for i in temp:
-        if i=="(" or i=="[":
-            stack.append(i)
-        elif i==")":
-            if not stack or stack[-1] =="[":
-                count+=1
-                break
-            elif stack[-1]=="(":
-                stack.pop()
-        elif i=="]":
-            if not stack or stack[-1]=="(":
-                count+=1
-                break
-            elif stack[-1]=="[":
-                stack.pop()
-    else:
-        if stack:
-            count+=1
-    print("yes") if count==0 else print("no")
+  temp=input().rstrip()
+  if temp=='.':
+    break
+  else:
+    print(vps(temp))
