@@ -1,25 +1,34 @@
-from collections import deque
 import sys
-import random
 input=sys.stdin.readline
-N=int(input())
-line=deque(list(map(int,input().split())))
-line2=deque([])
-flag=0
-i=1
-while line:
-    if line[0]==i:
-        line.popleft()
-        i+=1
-    else:
-        line2.appendleft(line.popleft())
-    while line2:
-        if line2[0]==i:
-            line2.popleft()
-            i+=1
-        else:
-            break
-if len(line)==0 and len(line2)==0:
-    print("Nice")
+
+from collections import deque
+
+n=int(input())
+now=deque(list(map(int,input().split())))
+space=[]
+wait=[0,0]
+result=[]
+c=1
+while now:
+  if len(space)>0:
+    wait[1]=space[-1]
+  else:
+    wait[1]=0
+  if len(now)>0:
+    wait[0]=now[0]
+  else:
+    wait[0]=0
+  if wait[0]==c:
+    result.append(now.popleft())
+    c+=1
+  elif wait[1]==c:
+    result.append(space.pop())
+    c+=1
+  else:
+    space.append(now.popleft())
+for _ in range(len(space)):
+  result.append(space.pop())
+if result==sorted(result):
+  print("Nice")
 else:
-    print("Sad")
+  print("Sad")
