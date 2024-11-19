@@ -1,20 +1,24 @@
-N=int(input())
-A=list(map(int,input().split()))
-A.sort()
+import sys
+input=sys.stdin.readline
+
+n=int(input())
+a=sorted(list(map(int,input().split())))
 count=0
-for i in range(N):
-    start,end=0,N-1
-    while start<end:
-        if A[start]+A[end]>A[i]:
-            end-=1
-        elif A[start]+A[end]<A[i]:
-            start+=1
-        else:
-            if start==i:
-                start+=1
-            elif end==i:
-                end-=1
-            else:
-                count+=1
-                break
+for i in range(len(a)):
+  num=a[i]
+  s,e=0,n-1
+  while s<e:
+    temp=a[s]+a[e]
+    if temp==num:
+      if s!=i and e!=i:
+        count+=1
+        break
+      elif s==i:
+        s+=1
+      elif e==i:
+        e-=1
+    elif temp<num:
+      s+=1
+    else:
+      e-=1
 print(count)
