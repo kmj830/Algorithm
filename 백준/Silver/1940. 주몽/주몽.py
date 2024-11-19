@@ -1,14 +1,18 @@
-import sys
-n=int(sys.stdin.readline().strip())
-m=int(sys.stdin.readline().strip())
-materials=sorted(list(map(int,sys.stdin.readline().split())))
-i=0;j=n-1;count=0
-while i<j:
-    if materials[i]+materials[j]==m:
-        count+=1
-        i+=1;j-=1
-    elif materials[i]+materials[j]<m:
-        i+=1
-    else:
-        j-=1
-print(count)
+# 문제 7 / 주몽의 명령
+# https://www.acmicpc.net/problem/1940
+
+N=int(input())
+M=int(input())
+material=sorted(list(map(int,input().split())))
+s,e=0,N-1
+answer=0
+while s<e:
+  result=material[s]+material[e]
+  if result==M:
+    s+=1
+    answer+=1
+  elif result<M:
+    s+=1
+  else:
+    e-=1
+print(answer)
