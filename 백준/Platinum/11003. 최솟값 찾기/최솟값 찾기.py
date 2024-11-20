@@ -1,12 +1,22 @@
-from sys import stdin
+# 문제 10 / 최솟값 찾기 1
+# https://www.acmicpc.net/problem/11003
+
+from sys import stdin,stdout
+input=stdin.readline
+print=stdout.write
 from collections import deque
-N,L=map(int,stdin.readline().split())
-A=list(map(int,stdin.readline().split()))
-array=deque([])
-for i in range(N):
-    while array and array[-1][0]>A[i]:
-        array.pop()
-    array.append((A[i],i))
-    if i-array[0][1]>=L:
-        array.popleft()
-    print(array[0][0],end=" ")
+
+N,L=map(int,input().split())
+A=list(map(int,input().split()))
+q=deque([[0,A[0]]])
+print(str(q[0][1])+' ')
+for i in range(1,N):
+  while len(q)>1 and q[-1][1]>=A[i]:
+    q.pop()
+  q.append([i,A[i]])
+  #print(q,end=' -> ')
+  if q[0][0]<i-(L-1) or q[0][1]>=A[i]:
+    q.popleft()
+  
+  #print(f"{q} | answer : {answer}");input()
+  print(str(q[0][1])+' ')
