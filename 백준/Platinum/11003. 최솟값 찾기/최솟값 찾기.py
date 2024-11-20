@@ -2,21 +2,19 @@
 # https://www.acmicpc.net/problem/11003
 
 from sys import stdin,stdout
+from collections import deque
+
 input=stdin.readline
 print=stdout.write
-from collections import deque
 
 N,L=map(int,input().split())
 A=list(map(int,input().split()))
-q=deque([[0,A[0]]])
+q=deque([(0,A[0])])
 print(str(q[0][1])+' ')
 for i in range(1,N):
-  while len(q)>1 and q[-1][1]>=A[i]:
+  while q and q[-1][1]>=A[i]:
     q.pop()
-  q.append([i,A[i]])
-  #print(q,end=' -> ')
-  if q[0][0]<i-(L-1) or q[0][1]>=A[i]:
+  q.append((i,A[i]))
+  if q[0][0]<i-(L-1):
     q.popleft()
-  
-  #print(f"{q} | answer : {answer}");input()
   print(str(q[0][1])+' ')
