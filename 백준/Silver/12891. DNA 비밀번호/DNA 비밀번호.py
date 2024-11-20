@@ -1,44 +1,34 @@
-import sys
-input=sys.stdin.readline
-S,P=map(int,input().split())
-dna=input().strip()
-acgt=list(map(int,input().split()))
-start,end=0,P
-temp=[0,0,0,0]
-count=0
-for i in range(P):
-    match dna[i]:
-        case 'A':
-            temp[0]+=1
-        case 'C':
-            temp[1]+=1
-        case 'G':
-            temp[2]+=1
-        case 'T':
-            temp[3]+=1
-while end<=S:
-    if temp[0]>=acgt[0] and temp[1]>=acgt[1] and temp[2]>=acgt[2] and temp[3]>=acgt[3]:
-        count+=1
-    try:
-        match dna[start]:
-            case 'A':
-                temp[0]-=1
-            case 'C':
-                temp[1]-=1
-            case 'G':
-                temp[2]-=1
-            case 'T':
-                temp[3]-=1
-        match dna[end]:
-            case 'A':
-                temp[0]+=1
-            case 'C':
-                temp[1]+=1
-            case 'G':
-                temp[2]+=1
-            case 'T':
-                temp[3]+=1
-        start+=1;end+=1
-    except:
-        break
-print(count)
+#03-4 p65
+
+# import sys
+# input=sys.stdin.readline
+result=0
+def check():
+  global my_list,acgt,result
+  if my_list['A']>=acgt['A'] and my_list['C']>=acgt['C'] and my_list['G']>=acgt['G'] and my_list['T']>=acgt['T']:
+    result+=1
+s,p=map(int,input().split())
+dna=list(input())
+temp=list(map(int,input().split()))
+acgt={
+    'A':temp[0],
+    'C':temp[1],
+    'G':temp[2],
+    'T':temp[3]
+}
+my_list={
+    'A':0,
+    'C':0,
+    'G':0,
+    'T':0
+}
+
+for k in range(p):
+  my_list[dna[k]]+=1
+check()
+for i in range(p,s):
+  j=i-p
+  my_list[dna[j]]-=1
+  my_list[dna[i]]+=1
+  check()
+print(result)
