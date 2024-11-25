@@ -1,5 +1,7 @@
-n=int(input())
 import sys
-array=[int(sys.stdin.readline().rstrip()) for _ in range(n)]
-array.sort()
-[print(array[i]) for i in range(n)]
+input=sys.stdin.readline
+n=[]
+for _ in range(int(input())):
+  n.append(int(input()))
+for i in sorted(n):
+  print(i)
