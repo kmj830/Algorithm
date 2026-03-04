@@ -11,14 +11,15 @@ public class Main {
         int m = 0; //생성자
 
         for (int i = 0; i < n; i++) {
+            int total = i;
             int temp = i;
-            String[] iArr = String.valueOf(i).split("");
-            for (String s : iArr) {
-                int parsedInt = Integer.parseInt(s);
-                temp += parsedInt;
 
+            while (temp > 10) {
+                total += temp % 10;
+                temp /= 10;
             }
-            if (temp == n) {
+            total += temp;
+            if (total == n) {
                 m = i;
                 break;
             }
