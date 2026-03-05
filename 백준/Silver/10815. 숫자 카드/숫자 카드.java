@@ -1,7 +1,6 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.StringTokenizer;
@@ -9,8 +8,8 @@ import java.util.StringTokenizer;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+        StringBuilder sb = new StringBuilder();
         int n = Integer.parseInt(br.readLine());
-//        HashSet<Integer> set = new HashSet<>(Arrays.asList(Arrays.stream(Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray()).boxed().toArray(Integer[]::new)));
         StringTokenizer st = new StringTokenizer(br.readLine());
         HashSet<Integer> set = new HashSet<>();
         while (st.hasMoreTokens()) {
@@ -20,10 +19,11 @@ public class Main {
         int[] array = Arrays.stream(br.readLine().split(" ")).mapToInt(Integer::parseInt).toArray();
         for (int i : array) {
             if (set.contains(i)) {
-                System.out.print(1 + " ");
+                sb.append(1).append(" ");
             }else {
-                System.out.print(0 + " ");
+                sb.append(0).append(" ");
             }
         }
+        System.out.println(sb);
     }
 }
