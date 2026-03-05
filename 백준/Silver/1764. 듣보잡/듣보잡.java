@@ -1,9 +1,7 @@
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
-import java.util.HashSet;
-import java.util.StringTokenizer;
+import java.util.*;
 
 public class Main {
     public static void main(String[] args) throws IOException {
@@ -24,10 +22,11 @@ public class Main {
         }
 
         setN.retainAll(setM);
-        Object[] array = setN.stream().sorted().toArray();
-        System.out.println(array.length);
-        for (Object o : array) {
-            sb.append(o.toString()).append("\n");
+        ArrayList<String> result = new ArrayList<>(setN);
+        result.sort(Comparator.naturalOrder());
+        System.out.println(result.size());
+        for (String s : result) {
+            sb.append(s).append("\n");
         }
         System.out.println(sb);
     }
