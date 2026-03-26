@@ -4,8 +4,6 @@ import java.io.InputStreamReader;
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int n = Integer.parseInt(br.readLine());
-        System.out.println((int)Math.pow(2,n));
+        System.out.println((int)Math.pow(2, Integer.parseInt(new BufferedReader(new InputStreamReader(System.in)).readLine())));
     }
 }
